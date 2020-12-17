@@ -9,13 +9,17 @@ var apiCtrl = require('../controllers/api.js')
 router.get('/', async (req, res) => {
   try {
     var shortUrl = req.body.shortUrl
-    var url = await apiCtrl.getURL(shortUrl)
-    res.json({
-      url
-    })
+    if (!shortUrl) {
+      res.status(400).json({
+        message: "Please check the key. It should be 'shortUrl'"
+      })
+    } else {
+      var url = await apiCtrl.getURL(shortUrl)
+      res.json(url)
+    }
   } catch (e) {
     res.status(500).json({
-      message: "Internal server error"
+      message: "Internal Server Error"
     })
   }
 });
@@ -28,7 +32,7 @@ router.post('/', async (req, res) => {
     shortUrl.short(url, async (err, shortUrl) => {
       if (err) {
         res.status(500).json({
-          message: "Internal server error"
+          message: "Cannot create shortened URL"
         })
       } else {
         var check = await apiCtrl.createURL(url, shortUrl)
@@ -45,7 +49,7 @@ router.post('/', async (req, res) => {
     });
   } catch (e) {
     res.status(500).json({
-      message: "Internal server error"
+      message: "Internal Server Error"
     })
   }
 });
