@@ -15,9 +15,12 @@ router.get('/', async (req, res) => {
       })
     } else {
       var url = await apiCtrl.getURL(shortUrl)
-      res.json(url)
+      res.json({
+        url
+      })
     }
   } catch (e) {
+    console.log(e)
     res.status(500).json({
       message: "Internal Server Error"
     })
@@ -35,16 +38,10 @@ router.post('/', async (req, res) => {
           message: "Cannot create shortened URL"
         })
       } else {
-        var check = await apiCtrl.createURL(url, shortUrl)
-        if (!check)
-          res.status(403).json({
-            message: "Shortened URL already registered"
-          })
-        else {
-          res.status(200).json({
-            shortUrl
-          })
-        }
+        await apiCtrl.createURL(url, shortUrl)
+        res.status(200).json({
+          shortUrl
+        })
       }
     });
   } catch (e) {

@@ -13,4 +13,4 @@ var urlSchema = new Schema({
     },
 });
 
-module.exports = URL = mongoose.model('URL', urlSchema)
+module.exports = URL = mongoose.model('URL', urlSchema, 'URL')

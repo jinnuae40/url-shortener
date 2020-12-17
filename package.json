@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "async-redis": "^1.1.7",
@@ -15,6 +15,7 @@
     "mongoose": "^5.11.8",
     "morgan": "~1.9.1",
     "node-url-shortener": "^1.1.11",
+    "nodemon": "^2.0.6",
     "winston": "^3.3.3"
   }
 }

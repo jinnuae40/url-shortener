@@ -7,7 +7,3 @@ Please, check that it is 'shortUrl' not 'shorturl'.
 
 ## Create shortUrl from url
 curl {Server IP} -XPOST -d "url=https://url"
-
-### When duplicated request comes
-When duplicated, it will return below.
-{"message":"Shortened URL already registered"}
