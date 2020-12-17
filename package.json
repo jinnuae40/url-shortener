@@ -1,0 +1,20 @@
+{
+  "name": "init",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async-redis": "^1.1.7",
+    "body-parser": "^1.18.3",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.11.8",
+    "morgan": "~1.9.1",
+    "node-url-shortener": "^1.1.11",
+    "winston": "^3.3.3"
+  }
+}
