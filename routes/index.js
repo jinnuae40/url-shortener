@@ -4,6 +4,9 @@ var router = express.Router();
 var shortUrl = require('node-url-shortener');
 var apiCtrl = require('../controllers/api.js')
 
+var mongoose = require('mongoose');
+
+
 // get url from shorturl
 // expect body {shortUrl: "XXX"}
 router.get('/', async (req, res) => {
@@ -48,6 +51,14 @@ router.post('/', async (req, res) => {
     res.status(500).json({
       message: "Internal Server Error"
     })
+  }
+});
+
+router.get('/health_check', async (req, res) => {
+  if (mongoose.connection.readyState) {
+    res.status(200).send("OK")
+  } else {
+    res.status(500).send("NOT OK")
   }
 });
 
